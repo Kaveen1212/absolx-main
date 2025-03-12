@@ -1,0 +1,80 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 240 10% 3.9%;
+    --foreground: 0 0% 98%;
+
+    --card: 240 10% 3.9%;
+    --card-foreground: 0 0% 98%;
+
+    --popover: 240 10% 3.9%;
+    --popover-foreground: 0 0% 98%;
+
+    --primary: 48 96% 89%;
+    --primary-foreground: 240 10% 3.9%;
+
+    --secondary: 43 96% 56%;
+    --secondary-foreground: 0 0% 98%;
+
+    --muted: 240 3.7% 15.9%;
+    --muted-foreground: 240 5% 84.9%;
+
+    --accent: 43 96% 56%;
+    --accent-foreground: 0 0% 98%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 240 3.7% 15.9%;
+    --input: 240 3.7% 15.9%;
+    --ring: 48 96% 89%;
+
+    --radius: 0.75rem;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  html {
+    @apply scroll-smooth;
+  }
+
+  body {
+    @apply bg-absolutex-darker text-foreground antialiased;
+    background-image: radial-gradient(circle at 15% 25%, rgba(234, 179, 8, 0.08) 0%, transparent 30%),
+                      radial-gradient(circle at 85% 75%, rgba(251, 191, 36, 0.08) 0%, transparent 30%);
+    background-attachment: fixed;
+  }
+}
+
+@layer components {
+  .glass-card {
+    @apply bg-absolutex-dark bg-opacity-40 backdrop-blur-md backdrop-filter border border-white/5 shadow-xl;
+  }
+  
+  .neon-button {
+    @apply relative overflow-hidden bg-absolutex-amber text-white rounded-lg px-8 py-3 font-semibold transition-all duration-300 hover:bg-opacity-90;
+    box-shadow: 0 0 15px rgba(234, 179, 8, 0.4), 0 0 30px rgba(234, 179, 8, 0.1);
+  }
+  
+  .neon-button:hover {
+    box-shadow: 0 0 20px rgba(234, 179, 8, 0.6), 0 0 40px rgba(234, 179, 8, 0.2);
+  }
+  
+  .neon-glow {
+    @apply animate-glow;
+  }
+  
+  .shimmer-effect {
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.08), transparent);
+    background-size: 500px 100%;
+    @apply animate-shimmer;
+  }
+}
