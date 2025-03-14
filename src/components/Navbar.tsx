@@ -26,8 +26,8 @@ const Navbar = () => {
         <div className="flex items-center justify-between">
           {/* Logo */}
           <div className="flex items-center">
-              <img src="/logo.webp" alt="" />
-          </div>
+              <img src="/riselogo.webp" alt="" width= "100" />
+          </div> 
           
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center space-x-8">

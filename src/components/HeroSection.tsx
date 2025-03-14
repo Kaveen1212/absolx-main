@@ -1,18 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
-import { BarChart, Bar, PieChart, Pie, LineChart, Line, Cell, ResponsiveContainer, Tooltip, Area } from 'recharts';
-
-// Chart data
-const conversionData = [
-  { name: 'Previous', value: 48 },
-  { name: 'Current', value: 93 },
-];
-
-const timeData = [
-  { name: 'Before', value: 44 },
-  { name: 'After', value: 78 },
-];
+import { LineChart, Line, ResponsiveContainer, Tooltip, Area } from 'recharts';
 
 // Enhanced line chart data with more pronounced upward trend
 const roiData = [
@@ -26,11 +15,6 @@ const roiData = [
   { name: 'Aug', x: 7, value: 60, y: 60 }
 ];
 
-const aiOptimizationData = [
-  { name: 'Coverage', value: 24 },
-  { name: 'Remaining', value: 76 },
-];
-
 // Enhanced color palette
 const COLORS = {
   primary: '#FBBF24',
@@ -41,10 +25,10 @@ const COLORS = {
 };
 
 // Custom tooltip component
-const CustomTooltip = ({ active, payload, label, valueFormat }) => {
+const CustomTooltip = ({ active = false, payload = [], label = '', valueFormat = (val) => val }) => {
   if (active && payload && payload.length) {
     return (
-      <div className="custom-tooltip bg-black/80 backdrop-blur-sm border border-absolutex-amber/20 px-3 py-2 rounded-md shadow-lg">
+      <div className="custom-tooltip bg-black/50 backdrop-blur-xl border border-absolutex-amber/30 px-3 py-2 rounded-md shadow-lg">
         <p className="text-absolutex-amber text-xs font-medium">{`${label || payload[0].name}`}</p>
         <p className="text-white text-sm font-semibold">
           {valueFormat ? valueFormat(payload[0].value) : payload[0].value}
@@ -57,7 +41,7 @@ const CustomTooltip = ({ active, payload, label, valueFormat }) => {
 
 // Horizontal Progress Component
 const HorizontalProgress = ({ progress }) => (
-  <div className="w-full h-3 bg-absolutex-amber/10 rounded-full overflow-hidden">
+  <div className="w-full h-3 bg-white/5 rounded-full overflow-hidden">
     <motion.div 
       className="h-full bg-gradient-to-r from-absolutex-amber to-absolutex-gold"
       initial={{ width: 0 }}
@@ -79,7 +63,7 @@ const CircularProgress = ({ progress }) => {
         <circle 
           cx="50" cy="50" r={radius}
           fill="transparent"
-          stroke="rgba(251, 191, 36, 0.1)"
+          stroke="rgba(255, 255, 255, 0.05)"
           strokeWidth="8"
         />
         <motion.circle 
@@ -121,7 +105,7 @@ const RingChart = ({ children }) => (
       <circle 
         cx="50" cy="50" r="40"
         fill="transparent"
-        stroke="rgba(251, 191, 36, 0.1)"
+        stroke="rgba(255, 255, 255, 0.05)"
         strokeWidth="8"
       />
       <motion.circle 
@@ -195,9 +179,13 @@ const HeroSection = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.1 }}
-              className="glass-card rounded-xl p-4 flex flex-col items-center"
+              className="glass-card p-4 flex flex-col items-center"
+              whileHover={{ 
+                y: -5,
+                boxShadow: "0 10px 30px rgba(251, 191, 36, 0.2)" 
+              }}
             >
-              <p className="text-sm text-muted-foreground mb-2">Conversion Increase</p>
+              <p className="text-sm text-white/70 mb-2">Conversion Increase</p>
               <div className="h-20 w-full flex items-center">
                 <HorizontalProgress progress={93} />
               </div>
@@ -209,9 +197,13 @@ const HeroSection = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="glass-card rounded-xl p-4 flex flex-col items-center"
+              className="glass-card p-4 flex flex-col items-center"
+              whileHover={{ 
+                y: -5,
+                boxShadow: "0 10px 30px rgba(251, 191, 36, 0.2)" 
+              }}
             >
-              <p className="text-sm text-muted-foreground mb-2">Time Saved</p>
+              <p className="text-sm text-white/70 mb-2">Time Saved</p>
               <div className="h-20 w-full flex items-center justify-center">
                 <CircularProgress progress={78} />
               </div>
@@ -223,9 +215,13 @@ const HeroSection = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.3 }}
-              className="glass-card rounded-xl p-4 flex flex-col items-center"
+              className="glass-card p-4 flex flex-col items-center"
+              whileHover={{ 
+                y: -5,
+                boxShadow: "0 10px 30px rgba(251, 191, 36, 0.2)" 
+              }}
             >
-              <p className="text-sm text-muted-foreground mb-2">ROI Growth</p>
+              <p className="text-sm text-white/70 mb-2">ROI Growth</p>
               <div className="h-20 w-full">
                 <ResponsiveContainer width="100%" height="100%">
                   <LineChart data={roiData} margin={{ top: 5, right: 5, left: 5, bottom: 5 }}>
@@ -267,9 +263,13 @@ const HeroSection = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.4 }}
-              className="glass-card rounded-xl p-4 flex flex-col items-center"
+              className="glass-card p-4 flex flex-col items-center"
+              whileHover={{ 
+                y: -5,
+                boxShadow: "0 10px 30px rgba(251, 191, 36, 0.2)" 
+              }}
             >
-              <p className="text-sm text-muted-foreground mb-2">AI Optimization</p>
+              <p className="text-sm text-white/70 mb-2">AI Optimization</p>
               <div className="h-20 w-full flex items-center justify-center">
                 <RingChart>
                   <div className="text-transparent bg-clip-text bg-yellow-amber-gradient text-lg font-bold">24/7</div>
